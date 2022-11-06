@@ -1,7 +1,5 @@
 package com.example.core.usecase.user;
 
-import java.sql.Timestamp;
-
 import com.example.core.usecase.InputBoundary;
 
 public abstract class SaveUserUsecase
@@ -11,18 +9,15 @@ implements InputBoundary<SaveUserUsecase.Input, SaveUserUsecase.Output> {
 
         private String username;
         private String password;
-        private Timestamp createdAt;
 
         private Input() {}
 
         public String getUsername() { return username; }
         public String getPassword() { return password; }
-        public Timestamp getCreatedAt() { return createdAt; }
 
         public static Input with() { return new Input(); }
         public Input username(String value) { this.username = value; return this; }
         public Input password(String value) { this.password = value; return this; }
-        public Input createdAt(Timestamp time) { this.createdAt = time; return this; }
     }
 
     public static class Output implements InputBoundary.OutputModel {
