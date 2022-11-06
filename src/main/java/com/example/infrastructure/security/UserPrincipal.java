@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.infrastructure.jpa.entity.User;
+import com.example.infrastructure.jpa.user.UserEntity;
 
 public class UserPrincipal implements UserDetails {
 
@@ -18,7 +18,7 @@ public class UserPrincipal implements UserDetails {
 
     private UserPrincipal() {}
 
-    public static UserPrincipal from(User user) {
+    public static UserPrincipal fromThis(UserEntity user) {
 
         return Optional
         .ofNullable(user)
