@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.example.core.entity.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,27 +30,4 @@ public class UserEntity {
 
     @Column
     private Timestamp createdAt;
-
-    public static UserEntity fromThis(User user) {
-
-        if (user == null) return null;
-
-        return UserEntity
-        .builder()
-        .username(user.getUsername())
-        .password(user.getPassword())
-        .createdAt(user.getCreatedAt())
-        .build();
-    }
-
-    public static User getDomainFromThis(UserEntity entity) {
-
-        if (entity == null) return null;
-
-        return User
-        .with()
-        .username(entity.username)
-        .password(entity.password)
-        .createdAt(entity.createdAt);
-    }
 }

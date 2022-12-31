@@ -2,6 +2,8 @@ package com.example.infrastructure.adapter.gateway;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,9 +20,32 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class SecurityUserGateway implements UserGateway, UserDetailsService {
+public class JpaUserGateway implements UserGateway, UserDetailsService {
 
     private final UserRepository repository;
+
+    public static UserEntity fromThisDomain(User user) {
+
+        if (user == null) return null;
+
+        return UserEntity
+        .builder()
+        .username(user.getUsername())
+        .password(user.getPassword())
+        .createdAt(user.getCreatedAt())
+        .build();
+    }
+
+    public static User fromThisEntity(UserEntity entity) {
+
+        if (entity == null) return null;
+
+        return User
+        .with()
+        .username(entity.getUsername())
+        .password(entity.getPassword())
+        .createdAt(entity.getCreatedAt());
+    }
 
     @Override
     public User findByUsername(String username) {
@@ -28,24 +53,24 @@ public class SecurityUserGateway implements UserGateway, UserDetailsService {
         return Optional
         .ofNullable(username)
         .map(repository::findByUsername)
-        .map(UserEntity::getDomainFromThis)
+        .map(JpaUserGateway::fromThisEntity)
         .orElse(null);
     }
 
     @Override
+    @Transactional
     public User save(User user) {
 
         return Optional
         .ofNullable(user)
-        .map(UserEntity::fromThis)
+        .map(JpaUserGateway::fromThisDomain)
         .map(repository::save)
-        .map(UserEntity::getDomainFromThis)
+        .map(JpaUserGateway::fromThisEntity)
         .orElse(null);
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username)
-    throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         return Optional
         .ofNullable(username)
