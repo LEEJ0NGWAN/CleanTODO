@@ -13,16 +13,16 @@ public class SearchUserInteractor extends SearchUserUsecase {
     }
 
     @Override
-    public Output execute(Input input) {
+    public Response execute(Request data) {
 
-        if (input == null || input.getUsername() == null)
+        if (data == null || data.getUsername() == null)
         return null;
 
-        final User user = gateway.findByUsername(input.getUsername());
+        final User user = gateway.findByUsername(data.getUsername());
 
         if (user == null) return null;
 
-        return Output
+        return Response
         .with()
         .username(user.getUsername())
         .password(user.getPassword())

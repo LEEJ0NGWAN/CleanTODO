@@ -1,10 +1,10 @@
 package com.example.core.usecase;
 
 public interface InputBoundary
-<I extends InputBoundary.InputModel, O extends InputBoundary.OutputModel> {
+<I extends InputBoundary.RequestModel, O extends InputBoundary.ResponseModel> {
 
     public O execute(I input);
 
-    public interface InputModel {}
-    public interface OutputModel {}
+    public interface RequestModel {}
+    public interface ResponseModel {}
 }

@@ -15,26 +15,26 @@ public class SaveUserInteractor extends SaveUserUsecase {
     }
 
     @Override
-    public Output execute(Input input) {
+    public Response execute(Request data) {
 
-        if (input == null)
-        return Output
+        if (data == null)
+        return Response
         .with()
         .result(false)
         .message("invalid input");
 
 
-        final String username = input.getUsername();
-        final String password = input.getPassword();
+        final String username = data.getUsername();
+        final String password = data.getPassword();
 
         if (username == null || "".equals(username))
-        return Output
+        return Response
         .with()
         .result(false)
         .message("invalid username");
 
         if (password == null || "".equals(password))
-        return Output
+        return Response
         .with()
         .result(false)
         .message("invalid password");
@@ -48,12 +48,12 @@ public class SaveUserInteractor extends SaveUserUsecase {
         final User result = gateway.save(user);
 
         if (result == null)
-        return Output
+        return Response
         .with()
         .result(false)
         .message("save failed");
 
-        return Output
+        return Response
         .with()
         .result(true)
         .message(username);
