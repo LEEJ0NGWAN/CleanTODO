@@ -1,6 +1,6 @@
 package com.example.core.usecase;
 
-public interface OutputBoundary<O extends InputBoundary.ResponseModel, P> {
+public interface OutputBoundary<O extends InputBoundary.ResponseModel> {
 
-    public P present(O o);
+    public void present(O o);
 }
