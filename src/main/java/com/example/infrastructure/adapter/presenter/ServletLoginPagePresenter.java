@@ -46,7 +46,7 @@ public class ServletLoginPagePresenter extends LoginPagePresenter {
                 response.setContentType(MediaType.TEXT_HTML_VALUE);
 
                 final View view =
-                viewResolver.resolveViewName("signup", Locale.getDefault());
+                viewResolver.resolveViewName("login", Locale.getDefault());
 
                 if (view != null) {
 
