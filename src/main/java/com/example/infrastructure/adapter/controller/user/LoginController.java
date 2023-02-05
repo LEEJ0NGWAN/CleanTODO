@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.core.usecase.user.LoginUsecase;
+import com.example.core.usecase.user.GetLoginPageUsecase;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,11 +13,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LoginController {
 
-    private final LoginUsecase loginUsecase;
+    private final GetLoginPageUsecase getLoginPage;
 
     @GetMapping
     public void getPage() {
 
-        loginUsecase.execute(null);
+        getLoginPage.execute(null);
     }
 }

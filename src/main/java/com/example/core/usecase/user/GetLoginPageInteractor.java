@@ -1,12 +1,12 @@
 package com.example.core.usecase.user;
 
-import com.example.core.presenter.LoginPresenter;
+import com.example.core.presenter.LoginPagePresenter;
 
-public class LoginInteractor extends LoginUsecase {
+public class GetLoginPageInteractor extends GetLoginPageUsecase {
 
-    private final LoginPresenter presenter;
+    private final LoginPagePresenter presenter;
 
-    public LoginInteractor(LoginPresenter presenter) {
+    public GetLoginPageInteractor(LoginPagePresenter presenter) {
 
         this.presenter = presenter;
     }

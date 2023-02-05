@@ -14,8 +14,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 
-import com.example.core.presenter.LoginPresenter;
-import com.example.core.usecase.user.LoginUsecase.Response;
+import com.example.core.presenter.LoginPagePresenter;
+import com.example.core.usecase.user.GetLoginPageUsecase.Response;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +23,7 @@ import static org.springframework.web.context.request.RequestContextHolder.getRe
 
 @Component
 @RequiredArgsConstructor
-public class LoginPagePresenter extends LoginPresenter {
+public class ServletLoginPagePresenter extends LoginPagePresenter {
 
     private final ViewResolver viewResolver;
 

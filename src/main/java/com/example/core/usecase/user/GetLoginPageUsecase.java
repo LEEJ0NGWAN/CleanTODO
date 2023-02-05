@@ -2,8 +2,8 @@ package com.example.core.usecase.user;
 
 import com.example.core.usecase.InputBoundary;
 
-public abstract class LoginUsecase
-implements InputBoundary<LoginUsecase.Request, LoginUsecase.Response> {
+public abstract class GetLoginPageUsecase
+implements InputBoundary<GetLoginPageUsecase.Request, GetLoginPageUsecase.Response> {
 
     public static class Request implements InputBoundary.RequestModel {
 
