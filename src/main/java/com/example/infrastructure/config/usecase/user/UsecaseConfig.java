@@ -5,8 +5,11 @@ import org.springframework.context.annotation.Configuration;
 
 import com.example.core.gateway.UserGateway;
 import com.example.core.presenter.LoginPagePresenter;
+import com.example.core.presenter.SignUpPagePresenter;
 import com.example.core.usecase.user.GetLoginPageInteractor;
 import com.example.core.usecase.user.GetLoginPageUsecase;
+import com.example.core.usecase.user.GetSignUpPageInteractor;
+import com.example.core.usecase.user.GetSignUpPageUsecase;
 import com.example.core.usecase.user.SaveUserInteractor;
 import com.example.core.usecase.user.SaveUserUsecase;
 import com.example.core.usecase.user.SearchUserInteractor;
@@ -16,7 +19,13 @@ import com.example.core.usecase.user.SearchUserUsecase;
 public class UsecaseConfig {
 
     @Bean
-    public GetLoginPageUsecase loginUsecase(LoginPagePresenter presenter) {
+    public GetSignUpPageUsecase signUpPageUsecase(SignUpPagePresenter presenter) {
+
+        return new GetSignUpPageInteractor(presenter);
+    }
+
+    @Bean
+    public GetLoginPageUsecase loginPageUsecase(LoginPagePresenter presenter) {
 
         return new GetLoginPageInteractor(presenter);
     }
